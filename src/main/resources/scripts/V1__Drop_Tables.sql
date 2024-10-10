@@ -10,4 +10,5 @@ DROP TABLE IF EXISTS account_details;
 DROP TABLE IF EXISTS billing_address;
 DROP TABLE IF EXISTS shipping_address;
 DROP TABLE IF EXISTS category;
+DROP TABLE IF EXISTS price;
 SET FOREIGN_KEY_CHECKS = 1;
