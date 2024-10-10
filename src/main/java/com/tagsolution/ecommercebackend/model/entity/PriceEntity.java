@@ -38,4 +38,7 @@ public class PriceEntity extends AuditableEntity implements Serializable {
 
     private boolean isDefaultPrice;
 
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private ProductEntity product;
 }

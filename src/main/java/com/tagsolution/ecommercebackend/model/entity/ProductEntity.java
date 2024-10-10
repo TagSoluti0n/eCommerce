@@ -15,10 +15,10 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "category")
-@SQLDelete(sql = "UPDATE category SET deleted = true WHERE id=?")
+@Table(name = "product")
+@SQLDelete(sql = "UPDATE product SET deleted = true WHERE id=?")
 @Where(clause = "deleted = false")
-public class CategoryEntity extends AuditableEntity implements Serializable {
+public class ProductEntity extends AuditableEntity implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 2L;
@@ -29,10 +29,22 @@ public class CategoryEntity extends AuditableEntity implements Serializable {
 
     private String title;
 
+    private String subtitle;
+
     private String description;
 
-    private String imageUrl;
+    private String brand;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-    private List<ProductEntity> products;
+    private int stockQuantity;
+
+    private boolean isAvailable;
+
+    private boolean isFeatured;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private CategoryEntity category;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<PriceEntity> prices;
 }
